@@ -8,16 +8,21 @@ import { AuthService } from './services/auth.service';
 })
 export class HasRoleGuard implements CanActivate {
 
-  constructor(private authService:AuthService,private route:Router){
+  constructor(private authService:AuthService,private _route:Router){
   }
-  canActivate(){
-    if(this.authService.userRoleAccess())
-    return true;
+  canActivate(route: ActivatedRouteSnapshot){
+    if(this.authService.SuperAdminAccess())
+    return this.isAuthorized(route);
     else
     {
-      this.route.navigate(['/dashboard'])
+      this._route.navigate(['/dashboard'])
       return false 
     }
   }
-  
+  private isAuthorized(route: ActivatedRouteSnapshot): boolean{
+    const Userroles= ['Admin', 'SuperAdmin', 'Author'];
+    const roles = route.data.roles;
+    const roleMatches = Userroles.findIndex(role=> roles.indexOf(role) !== -1);
+    return (roleMatches <= 0)? false: true;
+  }
 }

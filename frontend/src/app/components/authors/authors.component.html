@@ -17,9 +17,9 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center" scope="col">Serial No.</th>
-                                        <th scope="col">Authors Image</th>
-                                        <th scope="col">Authors Name</th>
-                                        <th class="text-center" scope="col"></th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Role</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -32,22 +32,33 @@
                                         <td>
                                            
                             
-                                <img style="width: 100px; border-radius: 50px; padding: 5px;" class="shadow" src="assets/images/files/{{author.authorImagePath}}" alt="" />
-                        
+                                            <div class="event-wrap">
+                                                <h4><a>{{author.username}}</a></h4>
+                                            </div>                        
                                         </td>
                                         <td>
                                             <div class="event-wrap">
-                                                <h4><a>{{author.authorname}}</a></h4>
+                                                <h4><a>{{author.email}}</a></h4>
                                             </div>
                                         </td>   
                                        
                                         <td>
-                                            <div class="primary-btn">
-                                                <button class="btn btn-info" (click)="onClick(author)" style="cursor:pointer; transition: ease-in-out;"> Read </button>
-                                            </div>
+                                              <form name="myForm" ng-app="follow.controllers" ng-controller="followCtrl">
+                                                <input type="checkbox" name="checkbox-follow-btn" id="checkbox-button-follow-user" class="hide-checkbox-follow-btn"
+                                                       ng-model="author.role" 
+                                                       ng-true-value="'UNFOLLOW'" 
+                                                       ng-false-value="'FOLLOW'">
+                                                
+                                                <label for="checkbox-button-follow-user">{{author.role}}</label>
+                                                </form>
+                                            
                                         </td>
 
-                                     
+                                     <td>
+                                        <div class="primary-btn">
+                                            <button class="btn btn-info" (click)="onClick(author)" style="cursor:pointer; transition: ease-in-out;"> Read </button>
+                                        </div>
+                                     </td>
                                     </tr>
                                     
                                 </tbody>

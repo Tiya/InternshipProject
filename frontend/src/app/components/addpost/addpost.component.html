@@ -1,0 +1,72 @@
+<div style="padding-top: 8%;" class='card'>
+    <form  class="shadow" style="padding-top: 2%;" #form="ngForm" (ngSubmit)="form.valid&&AddPost()">
+  <div class='card-header'>
+  Create New Post
+  </div>
+  <div class='card-body'>            
+  <div class='table-responsive'>
+    <table class='table'>       
+    
+      <tbody class="tbody">  
+            <tr>
+                <td class="td1"><label>Page Title</label></td>
+                <td class="td1"><input required #postName="ngModel" autocomplete="off" type="text"  name="post_name" [(ngModel)]="PostDetails.postTitle"/></td>                  
+            </tr> 
+            <tr>
+              <td></td>
+                <td><label class="text-danger" *ngIf="form.submitted&&postName.errors?.required">Page Title is required</label></td>
+            </tr> 
+            <tr>
+                <td><label>Post Categories</label></td>
+               <td> <select class="browser-default custom-select" >
+                  <option selected>Travel</option>
+                  <option value="1">Health</option>
+                  <option value="2">Cooking</option>
+                  <option value="3">Fashion</option>
+                </select>
+              </td>
+                <!-- <td><input required #postCategory="ngModel" type="text" autocomplete="off" required  name="postCategory" [(ngModel)]="PostDetails.postCategory"/></td>                   -->
+            </tr> 
+            <tr>
+                <td></td>
+                  <!-- <td><label class="text-danger" *ngIf="form.submitted&&postCategory.errors?.required">Please select a Post Category</label></td> -->
+            </tr>  
+            <tr>
+                <td><label>Post Featured Image</label></td>
+                 <td> <input required (change)="onImageSelect($event)" name="image" type="file" accept="image/png, image/jpeg, image/jpg"></td>  
+                </tr>  
+            <tr>
+                <td></td>
+                  <!-- <td><label class="text-danger" *ngIf="form.submitted&&bookCategory.errors?.required">Book Category is required</label></td> -->
+            </tr> 
+            <tr>
+                <td><label>Post</label></td>
+                <td>
+                  <textarea class="form-control" 
+                  name="postDescription"
+                  rows="8"
+                  [(ngModel)]="PostDetails.postDescription"
+                  #postDescription="ngModel"
+                  type="text"
+          ></textarea>
+                </td>
+                <!-- <td ><input required  #postDescription="ngModel" type="text" autocomplete="off"  name="postDescription" [(ngModel)]="PostDetails.PostDescription"/></td>                   -->
+            </tr> 
+            <tr>
+                <td></td>
+                <td><label class="text-danger" *ngIf="form.submitted&&postDescription.errors?.required">Post is required</label></td>
+            </tr> 
+         
+            
+                        
+            <tr>
+                <td></td>
+                <td class="submit"><input type="submit" value="Submit" id="submit" /></td>                  
+              </tr>             
+      </tbody>
+    </table>
+  </div>
+  </div>
+  </form>
+  </div>
+  

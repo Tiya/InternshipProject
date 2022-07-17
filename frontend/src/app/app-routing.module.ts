@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
-import { AddauthorsComponent } from './components/addauthors/addauthors.component';
-import { AddbookComponent } from './components/addbook/addbook.component';
+import { AddpostComponent } from './components/addpost/addpost.component';
 import { AuthorComponent } from './components/author/author.component';
 import { AuthorsComponent } from './components/authors/authors.component';
 import { BookComponent } from './components/book/book.component';
@@ -14,28 +13,56 @@ import { UpdatebookComponent } from './components/updatebook/updatebook.componen
 import { HasRoleGuard } from './has-role.guard';
 import { GenresComponent } from './components/genres/genres.component';
 import { UpdateauthorComponent } from './components/updateauthor/updateauthor.component';
+import { UsersComponent } from './components/users/users.component';
 
 const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {path:'home',component:HomeComponent},
 {path:'login',component:LoginComponent},
-{path:'update',component:UpdatebookComponent, canActivate:[AuthGuard, HasRoleGuard]},
-{path:'updateauthor',component:UpdateauthorComponent, canActivate:[AuthGuard, HasRoleGuard]},
-{path:'login',component:HomeComponent},
-{path:'author',component:AuthorComponent, canActivate:[AuthGuard]},
-{path:'book',component:BookComponent, canActivate:[AuthGuard]},
-{path:'books',component:BooksComponent
+{
+  path:'update',
+  component:UpdatebookComponent, 
+  canActivate:[AuthGuard, HasRoleGuard],
+  data:{
+    roles: ['SuperAdmin', 'Admin']
+  }
+},
+{
+  path:'updateauthor',
+  component:UpdateauthorComponent, 
+  canActivate:[AuthGuard, HasRoleGuard],
+  data:{
+    roles: ['SuperAdmin', 'Admin']
+  }
+},
+{
+  path:'login',
+  component:HomeComponent
+},
+{
+  path:'users',
+  component:UsersComponent, 
+  canActivate:[AuthGuard, HasRoleGuard],
+  data:{
+    roles: ['SuperAdmin']
+  }
+},
+{
+  path:'book',component:BookComponent, 
+  canActivate:[AuthGuard]
+},
+{
+  path:'books',component:BooksComponent
 ,canActivate:[AuthGuard]
 },
-{path:'addbook',component:AddbookComponent,canActivate:[AuthGuard, HasRoleGuard]
+{
+  path:'addpost',
+  component:AddpostComponent,
+  canActivate:[AuthGuard] 
 },
-{path:'authors',component:AuthorsComponent
-, canActivate:[AuthGuard],
-data:{
-  role: 'SUPER-ADMIN'
-}
-},
-{path:'addauthor',component:AddauthorsComponent
-,canActivate:[AuthGuard,HasRoleGuard]
+{
+  path:'authors',
+  component:AuthorsComponent,
+  canActivate:[AuthGuard], 
 },
 {path:'dashboard',component:DashboardComponent
 ,canActivate:[AuthGuard]

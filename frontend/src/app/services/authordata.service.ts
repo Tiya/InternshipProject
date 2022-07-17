@@ -9,8 +9,8 @@ export class AuthordataService {
 
   constructor(private http:HttpClient) { }
    getAuthors(){
-    //  return this.http.get("http://localhost:3000/authors");
-    return this.http.get("api/authors");
+     return this.http.get("http://localhost:3000/api");
+   // return this.http.get("api/authors");
    }
   //  newAuthor(item: AuthorModel){
     newAuthor(formData: FormData){

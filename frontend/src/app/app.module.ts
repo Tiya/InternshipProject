@@ -14,7 +14,6 @@ import { AuthService } from './services/auth.service';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { BooksComponent } from './components/books/books.component';
 import { AuthorsComponent } from './components/authors/authors.component';
-import { AddauthorsComponent } from './components/addauthors/addauthors.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import { UpdatebookComponent } from './components/updatebook/updatebook.component';
@@ -24,6 +23,8 @@ import { BookComponent } from './components/book/book.component';
 import { UpdateauthorComponent } from './components/updateauthor/updateauthor.component';
 import { AuthGuard } from './auth.guard';
 import { HasRoleGuard } from './has-role.guard';
+import { UsersComponent } from './components/users/users.component';
+import { AddpostComponent } from './components/addpost/addpost.component';
 
 @NgModule({
   declarations: [
@@ -36,12 +37,13 @@ import { HasRoleGuard } from './has-role.guard';
     AddbookComponent,
     BooksComponent,
     AuthorsComponent,
-    AddauthorsComponent,
     UpdatebookComponent,
     GenresComponent,
     AuthorComponent,
     BookComponent,
     UpdateauthorComponent,
+    UsersComponent,
+    AddpostComponent,
   ],
   imports: [
     BrowserModule,

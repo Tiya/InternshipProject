@@ -21,8 +21,14 @@ mongoose.connect(db, err=>{
     }
 })
 
-router.get('/',(req,res)=>{
-    res.send('Hello from API route');
+router.get('/', (req,res)=>{
+    // res.send('Hello from API route');
+   
+    User.find()
+    .then(function(user){
+        res.send(user);
+    })
+       
 })
 
 router.post('/signup', (req,res)=>{
@@ -85,8 +91,8 @@ router.post('/login',(req,res)=>{
         //     }
         //     else{
             userData.username="Admin";
-            userData.role="Admin";
-        //     let payload={subject:userData};
+            userData.role="SuperAdmin";
+            let payload={subject:userData};
             let token =jwt.sign(payload,'secretKey')
             res.status(200).send({token});
           //  }

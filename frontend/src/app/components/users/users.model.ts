@@ -1,4 +1,4 @@
-export class AuthorModel{
+export class UserModel{
     constructor(
         public _id: any,
         public username: string,

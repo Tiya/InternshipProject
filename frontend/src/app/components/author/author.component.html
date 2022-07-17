@@ -25,7 +25,7 @@
                       <table>
                         <tr>
                          
-                          <td *ngIf="_auth.userRoleAccess()">
+                          <td *ngIf="_auth.SuperAdminAccess() || _auth.AdminAccess()">
                           <button class="btn btn-warning"id="edit" style="cursor:pointer"  (click)="editAuthor(authors)"> Edit</button>
                        
                           <button class="btn btn-danger" id="delete" style="cursor:pointer" (click)="deleteAuthor(authors)"> Delete</button>   
