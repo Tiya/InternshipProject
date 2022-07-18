@@ -14,6 +14,7 @@ import { HasRoleGuard } from './has-role.guard';
 import { GenresComponent } from './components/genres/genres.component';
 import { UpdateauthorComponent } from './components/updateauthor/updateauthor.component';
 import { UsersComponent } from './components/users/users.component';
+import { AddcategoryComponent } from './components/addcategory/addcategory.component';
 
 const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {path:'home',component:HomeComponent},
@@ -60,8 +61,8 @@ const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
   canActivate:[AuthGuard] 
 },
 {
-  path:'authors',
-  component:AuthorsComponent,
+  path:'addcategory',
+  component:AddcategoryComponent,
   canActivate:[AuthGuard], 
 },
 {path:'dashboard',component:DashboardComponent

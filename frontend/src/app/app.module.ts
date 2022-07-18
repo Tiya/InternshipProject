@@ -25,6 +25,7 @@ import { AuthGuard } from './auth.guard';
 import { HasRoleGuard } from './has-role.guard';
 import { UsersComponent } from './components/users/users.component';
 import { AddpostComponent } from './components/addpost/addpost.component';
+import { AddcategoryComponent } from './components/addcategory/addcategory.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { AddpostComponent } from './components/addpost/addpost.component';
     UpdateauthorComponent,
     UsersComponent,
     AddpostComponent,
+    AddcategoryComponent,
   ],
   imports: [
     BrowserModule,

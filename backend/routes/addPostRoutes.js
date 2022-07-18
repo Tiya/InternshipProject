@@ -1,6 +1,7 @@
 const express=require(`express`);
 const postsRouter=express.Router();
 const Postdata = require('../models/PostData');
+const Categorydata = require('../models/Categorydata');
 const multer=require('multer')
 const jwt=require('jsonwebtoken')
 const path = require('path');
@@ -94,7 +95,21 @@ postsRouter.get('/',verifyToken, function (req, res) {
    var post = new Postdata(post);
    post.save();
 });
+//insertCategory
+postsRouter.post('/insertCategory',verifyToken,upload.fields([
+  {name: "image", maxCount: 1},
+]),function(req,res){
+  res.header("Access-Control-Allow-Origin","*")
+  res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
+  console.log("insertCategory:::");
 
+  var category = {             
+    categoryName : req.body.categoryName,
+               
+ }         
+ var category = new Categorydata(category);
+ category.save();
+});
 postsRouter.delete('/remove/:id',verifyToken,(req,res)=>{
    
   id = req.params.id;
