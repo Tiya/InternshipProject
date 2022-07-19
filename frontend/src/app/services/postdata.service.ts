@@ -18,10 +18,7 @@ export class PostdataService {
      return this.http.post("http://localhost:3000/posts/insert",formData)
     .subscribe(data =>{console.log(data)})
   }
-  newCategory(formData: FormData){
-    return this.http.post("http://localhost:3000/posts/insertCategory",formData)
-   .subscribe(data =>{console.log(data)})
- }
+
   // delete a post
   deletePost(id:any)
   {

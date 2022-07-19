@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoryModel} from '../../models/category.model';
-import {PostdataService}  from 'src/app/services/postdata.service';
+import {CategorydataService}  from 'src/app/services/categorydata.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 export class AddcategoryComponent implements OnInit {
   title:String="Add Category";
   CategoryDetails= new CategoryModel(0,"");
-  constructor(private postdataService: PostdataService, private router: Router) { }
+  constructor(private categorydataService: CategorydataService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -20,7 +20,7 @@ export class AddcategoryComponent implements OnInit {
     const formData = new FormData();
     
     formData.append('categoryName', this.CategoryDetails.categoryName)
-    this.postdataService.newCategory(formData);
+    this.categorydataService.newCategory(formData);
     console.log("add category ts");
     alert(this.CategoryDetails.categoryName+" is added successfully");
     this.router.navigate(['/posts']);
