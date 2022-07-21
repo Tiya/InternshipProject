@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   loginUserData: any = {}
 user={
     email:'',
-    password:''
+    password:'',
   }
   constructor(private _auth: AuthService,
     private _router: Router) { }
@@ -27,8 +27,9 @@ public isLoggedIn=false;
       .subscribe(
         res => {
           this.isLoggedIn=true;
-          console.log(res)
+          console.log("this.loginUserData::::", this.loginUserData)
           localStorage.setItem('token', res.token)
+
           alert("Welcome to MyBlogApp")
           this._router.navigate(['/dashboard'])
         },

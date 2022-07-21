@@ -38,11 +38,18 @@ export class AuthService {
     console.log('Hi GetToken');
     return localStorage.getItem('token');
   }
-
+getUserName(){
+  var token=localStorage.getItem('token')||"";
+  var parse = atob(token.split('.')[1])
+ var _roleAccess= JSON.parse(parse);
+  localStorage.setItem('loginUserName', _roleAccess.subject.username);
+  return localStorage.getItem('loginUserName');
+}
   SuperAdminAccess(){
     var token=localStorage.getItem('token')||"";
     var parse = atob(token.split('.')[1])
    var _roleAccess= JSON.parse(parse);
+  
    if((_roleAccess.subject.role ==="SuperAdmin")||(_roleAccess.subject.email=='admin@domain.com'&&_roleAccess.subject.password =="admin1234")){
      console.log('Hello Super Admin')
      console.log(_roleAccess.subject.role)

@@ -36,7 +36,7 @@ app.use('/authors',authorRouter);
 const postRouter=require('./routes/addPostRoutes');
 app.use('/posts',postRouter);
 
-const categoryRouter=require('./routes/addPostRoutes');
+const categoryRouter=require('./routes/addCategoryRoutes');
 app.use('/category',categoryRouter);
 
 

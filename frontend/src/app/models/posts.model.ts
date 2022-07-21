@@ -4,7 +4,9 @@ export class PostsModel{
        public _id: any,
         public postTitle: string,
         public postCategory: string,
-        public postDescription: string,       
+        public postDescription: string,   
+        public postDate: string, 
+        public postAuthor: string,   
         public postImagePath: string,  
     ){}
  }

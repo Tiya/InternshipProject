@@ -18,12 +18,12 @@
             </tr> 
             <tr>
                 <td><label>Post Categories</label></td>
-               <td> <select class="browser-default custom-select" >
-                  <option selected>Travel</option>
-                  <option value="1">Health</option>
-                  <option value="2">Cooking</option>
-                  <option value="3">Fashion</option>
-                </select>
+               <td> 
+                <select id="inputState" #postCategory="ngModel" [(ngModel)]="PostDetails.postCategory" name="postCategory"
+                [ngClass]="{'invalid-textbox' : form.submitted && postCategory.invalid }" required>
+                <option value="" selected>Select</option>
+                <option *ngFor="let category of categories" [value]="category.categoryName">{{category.categoryName}}</option>
+            </select>
               </td>
                 <!-- <td><input required #postCategory="ngModel" type="text" autocomplete="off" required  name="postCategory" [(ngModel)]="PostDetails.postCategory"/></td>                   -->
             </tr> 

@@ -22,7 +22,7 @@ export class PostdataService {
   // delete a post
   deletePost(id:any)
   {
-console.log("id to delete", id);
+  console.log("id to delete", id);
     return this.http.delete("http://localhost:3000/posts/remove/"+id)
   }
   //update a post

@@ -4,7 +4,7 @@ const Categorydata = require('../models/Categorydata');
 const jwt=require('jsonwebtoken')
 const path = require('path');
 var fs = require('fs');
-console.log("in addPostRoutes");
+console.log("in addCategoryRoutes");
   const cors = require('cors');
   var bodyparser=require('body-parser');
   categoryRouter.use(bodyparser.json({
@@ -17,20 +17,36 @@ console.log("in addPostRoutes");
     parameterLimit: 1000000
   }));
   categoryRouter.use(cors());
+  //get single category
+  // categoryRouter.get('/:id',verifyToken,  (req, res) => {
+  
+  //   const id = req.params.id;
+  //   Categorydata.findOne({"_id":id})
+  //     .then((post)=>{
+  //         res.send(category);
+  //     });
+  // })
+  //get all categories
+  categoryRouter.get('/',verifyToken, function (req, res) {
+    console.log("inside get category db");
+    Categorydata.find()
+              .then(function(categories){
+                  res.send(categories);
+              })
+    })    
+  
   //insertCategory
-  categoryRouter.post('/insertCategory',verifyToken,upload.fields([
-    {name: "image", maxCount: 1},
-  ]),function(req,res){
+  categoryRouter.post('/insertCategory',verifyToken,function(req,res){
     res.header("Access-Control-Allow-Origin","*")
     res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
     console.log("insertCategory:::");
   
-    var category = {             
+    var categories = {             
       categoryName : req.body.categoryName,
                  
    }         
-   var category = new Categorydata(category);
-   category.save();
+   var categories = new Categorydata(categories);
+   categories.save();
   });
   
   module.exports=categoryRouter;

@@ -6,6 +6,7 @@ const multer=require('multer')
 const jwt=require('jsonwebtoken')
 const path = require('path');
 var fs = require('fs');
+const alert = require('alert');
 
 
 console.log("in addPostRoutes");
@@ -62,14 +63,14 @@ function checkFileType(file, callback){
     callback('Error: Images only');
   }
 }
-postsRouter.get('/:id',verifyToken,  (req, res) => {
+// postsRouter.get('/:id',verifyToken,  (req, res) => {
   
-  const id = req.params.id;
-  Postdata.findOne({"_id":id})
-    .then((post)=>{
-        res.send(post);
-    });
-})
+//   const id = req.params.id;
+//   Postdata.findOne({"_id":id})
+//     .then((post)=>{
+//         res.send(post);
+//     });
+// })
 
 postsRouter.get('/',verifyToken, function (req, res) {
   Postdata.find()
@@ -90,6 +91,8 @@ postsRouter.get('/',verifyToken, function (req, res) {
         postAuthor : req.body.postAuthor,
         postCategory : req.body.postCategory,
         postDescription : req.body.postDescription,
+        postDate: req.body.postDate,
+        postAuthor: req.body.postAuthor,
         postImagePath : req.files.image[0].filename           
    }         
    var post = new Postdata(post);
@@ -117,7 +120,7 @@ postsRouter.delete('/remove/:id',verifyToken,(req,res)=>{
   Postdata.findByIdAndDelete({"_id":id})
   .then(()=>{
       console.log('success')
-      alert("Post deleted successfully");
+      // alert("Post deleted successfully");
       res.send();
   })
 })
@@ -133,6 +136,8 @@ postsRouter.put('/update',verifyToken, upload.fields([
   postAuthor = req.body.postAuthor,
   postCategory = req.body.postCategory,
   postDescription = req.body.postDescription,
+  postDate= req.body.postDate,
+ 
       
  
   Postdata.findByIdAndUpdate({"_id":id},
@@ -141,6 +146,8 @@ postsRouter.put('/update',verifyToken, upload.fields([
                               "postAuthor":postAuthor,
                               "postCategory":postCategory,
                               "postDescription":postDescription,
+                              "postDate":postDate,
+                              "postAuthor":postAuthor
                                }})
  .then(function(){
   

@@ -26,6 +26,10 @@ import { HasRoleGuard } from './has-role.guard';
 import { UsersComponent } from './components/users/users.component';
 import { AddpostComponent } from './components/addpost/addpost.component';
 import { AddcategoryComponent } from './components/addcategory/addcategory.component';
+import { PostsComponent } from './components/posts/posts.component';
+import { PostComponent } from './components/post/post.component';
+import { CategoriesComponent } from './components/categories/categories.component';
+import { UpdatepostComponent } from './components/updatepost/updatepost.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +50,10 @@ import { AddcategoryComponent } from './components/addcategory/addcategory.compo
     UsersComponent,
     AddpostComponent,
     AddcategoryComponent,
+    PostsComponent,
+    PostComponent,
+    CategoriesComponent,
+    UpdatepostComponent,
   ],
   imports: [
     BrowserModule,

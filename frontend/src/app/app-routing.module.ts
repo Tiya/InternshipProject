@@ -2,10 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
 import { AddpostComponent } from './components/addpost/addpost.component';
-import { AuthorComponent } from './components/author/author.component';
-import { AuthorsComponent } from './components/authors/authors.component';
-import { BookComponent } from './components/book/book.component';
-import { BooksComponent } from './components/books/books.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
@@ -15,30 +11,33 @@ import { GenresComponent } from './components/genres/genres.component';
 import { UpdateauthorComponent } from './components/updateauthor/updateauthor.component';
 import { UsersComponent } from './components/users/users.component';
 import { AddcategoryComponent } from './components/addcategory/addcategory.component';
+import {PostsComponent} from './components/posts/posts.component';
+import{PostComponent} from './components/post/post.component';
+import{CategoriesComponent} from './components/categories/categories.component';
 
 const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {path:'home',component:HomeComponent},
 {path:'login',component:LoginComponent},
-{
-  path:'update',
-  component:UpdatebookComponent, 
-  canActivate:[AuthGuard, HasRoleGuard],
-  data:{
-    roles: ['SuperAdmin', 'Admin']
-  }
-},
-{
-  path:'updateauthor',
-  component:UpdateauthorComponent, 
-  canActivate:[AuthGuard, HasRoleGuard],
-  data:{
-    roles: ['SuperAdmin', 'Admin']
-  }
-},
-{
-  path:'login',
-  component:HomeComponent
-},
+// {
+//   path:'update',
+//   component:UpdatebookComponent, 
+//   canActivate:[AuthGuard, HasRoleGuard],
+//   data:{
+//     roles: ['SuperAdmin', 'Admin']
+//   }
+// },
+// {
+//   path:'updateauthor',
+//   component:UpdateauthorComponent, 
+//   canActivate:[AuthGuard, HasRoleGuard],
+//   data:{
+//     roles: ['SuperAdmin', 'Admin']
+//   }
+// },
+// {
+//   path:'login',
+//   component:HomeComponent
+// },
 {
   path:'users',
   component:UsersComponent, 
@@ -48,11 +47,11 @@ const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
   }
 },
 {
-  path:'book',component:BookComponent, 
+  path:'post',component: PostComponent, 
   canActivate:[AuthGuard]
 },
 {
-  path:'books',component:BooksComponent
+  path:'posts',component:PostsComponent
 ,canActivate:[AuthGuard]
 },
 {
@@ -68,7 +67,7 @@ const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {path:'dashboard',component:DashboardComponent
 ,canActivate:[AuthGuard]
 },
-{path:'genres',component:GenresComponent
+{path:'categories',component:CategoriesComponent
 ,canActivate:[AuthGuard]
 }
 ];

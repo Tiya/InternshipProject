@@ -25,7 +25,7 @@ export class BookdataService {
   // delete a book
   deleteBook(id:any)
   {
-console.log("id to delete", id);
+  console.log("id to delete", id);
     // return this.http.delete("http://localhost:3000/books/remove/"+id)
     return this.http.delete("api/books/remove/"+id)
 

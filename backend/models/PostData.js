@@ -18,6 +18,8 @@ const PostSchema=new Schema({
     postAuthor : String,
     postCategory : String,
     postDescription : String,
+    postDate: String,
+    postAuthor: String
 
 });
 

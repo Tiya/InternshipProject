@@ -17,5 +17,5 @@ const CategorySchema=new Schema({
 });
 
 //Model creation
-var Categorydata= mongoose.model('category',CategorySchema);
+var Categorydata= mongoose.model('categories',CategorySchema);
 module.exports=Categorydata;
