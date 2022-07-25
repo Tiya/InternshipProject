@@ -43,7 +43,7 @@
                                 <small><a href="#" title="">by {{post.postAuthor}}</a></small>
                                 <small><a (click)="singlePost(post)" title=""><i class="fa fa-eye"></i> Read Full</a></small>
                                 <div style="display: flex ; justify-content: center">
-                                    <td *ngIf="_authservice.SuperAdminAccess() || _authservice.AdminAccess()">
+                                    <td *ngIf="_authservice.SuperAdminAccess() || _authservice.AdminAccess()  || _authservice.checkAuthorAndUserSame(post.postAuthor)">
                                    <button class="btn-sm btn-warning"id="edit" style="cursor:pointer; margin-right: 10px;"  (click)="editPost(post)"> Edit</button>
                                  
                                     <button class="btn-sm btn-danger" id="delete" style="cursor:pointer;" (click)="deletePost(post)"> Delete</button>   

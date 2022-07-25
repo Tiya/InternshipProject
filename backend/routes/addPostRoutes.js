@@ -63,14 +63,14 @@ function checkFileType(file, callback){
     callback('Error: Images only');
   }
 }
-// postsRouter.get('/:id',verifyToken,  (req, res) => {
+postsRouter.get('/:id',verifyToken,  (req, res) => {
   
-//   const id = req.params.id;
-//   Postdata.findOne({"_id":id})
-//     .then((post)=>{
-//         res.send(post);
-//     });
-// })
+  const id = req.params.id;
+  Postdata.findOne({"_id":id})
+    .then((post)=>{
+        res.send(post);
+    });
+})
 
 postsRouter.get('/',verifyToken, function (req, res) {
   Postdata.find()

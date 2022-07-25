@@ -32,7 +32,9 @@ export class PostsComponent implements OnInit {
     this.router.navigate(['post']);
   }
   editPost(post: any){
-
+    console.log("in edit post button clicked", post._id.toString());
+    localStorage.setItem("editPostId", post._id.toString());
+    this.router.navigate(['/updatepost']);
   }
   deletePost(post: any){
     if(confirm("Are you sure to delete "+post.postTitle+" ?")) {

@@ -8,6 +8,7 @@ export class PostdataService {
 
   constructor(private http:HttpClient) { }
   getPost(id:any){
+    console.log("in getpost details")
      return this.http.get("http://localhost:3000/posts/"+id); 
   }
 

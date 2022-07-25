@@ -35,7 +35,7 @@
                 <button class="btn btn-success"  id="read" style="cursor:pointer">
                 <a href="assets/images/files/{{bookItem.bookFilePath}}" target="_blank">Read</a></button>
                 </td>
-                <td *ngIf="_authservice.SuperAdminAccess() || _authservice.SuperAdminAccess()">
+                <td *ngIf="_authservice.SuperAdminAccess() || _authservice.AdminAccess()">
                 <button class="btn btn-warning"id="edit" style="cursor:pointer"  (click)="editBook(bookItem)"> Edit</button>
              
                 <button class="btn btn-danger" id="delete" style="cursor:pointer" (click)="deleteBook(bookItem)"> Delete</button>   

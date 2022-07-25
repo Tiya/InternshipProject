@@ -19,7 +19,6 @@ const PostSchema=new Schema({
     postCategory : String,
     postDescription : String,
     postDate: String,
-    postAuthor: String
 
 });
 

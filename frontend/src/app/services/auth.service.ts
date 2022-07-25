@@ -45,6 +45,12 @@ getUserName(){
   localStorage.setItem('loginUserName', _roleAccess.subject.username);
   return localStorage.getItem('loginUserName');
 }
+checkAuthorAndUserSame(authorName : any){
+  var loginUser = this.getUserName();  
+  if(loginUser==authorName)
+  console.log("author and user same");
+  return (authorName==loginUser)? true:false;
+}
   SuperAdminAccess(){
     var token=localStorage.getItem('token')||"";
     var parse = atob(token.split('.')[1])

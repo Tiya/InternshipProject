@@ -24,8 +24,7 @@ export class AddpostComponent implements OnInit {
   ngOnInit(): void {
     this.categorydataService.getCategories().subscribe((data)=>{
       this.categories=JSON.parse(JSON.stringify(data));
-      console.log("category list:::::",data);
-      console.log("category list:::::",this.categories);
+ 
     })
     
   }
@@ -39,7 +38,6 @@ export class AddpostComponent implements OnInit {
     formData.append('postDescription', this.PostDetails.postDescription)
     formData.append('postDate',this.today)
     this.author = this.authservice.getUserName();
-    console.log("today:::::", this.today);
     formData.append('postAuthor', this.author)
     this.postdataService.newPost(formData);
     console.log("called");

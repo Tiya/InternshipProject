@@ -14,30 +14,29 @@ import { AddcategoryComponent } from './components/addcategory/addcategory.compo
 import {PostsComponent} from './components/posts/posts.component';
 import{PostComponent} from './components/post/post.component';
 import{CategoriesComponent} from './components/categories/categories.component';
+import { UpdatepostComponent } from './components/updatepost/updatepost.component';
 
 const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {path:'home',component:HomeComponent},
 {path:'login',component:LoginComponent},
 // {
-//   path:'update',
-//   component:UpdatebookComponent, 
+//   path:'updatepost',
+//   component:UpdatepostComponent, 
 //   canActivate:[AuthGuard, HasRoleGuard],
 //   data:{
 //     roles: ['SuperAdmin', 'Admin']
 //   }
 // },
-// {
-//   path:'updateauthor',
-//   component:UpdateauthorComponent, 
-//   canActivate:[AuthGuard, HasRoleGuard],
-//   data:{
-//     roles: ['SuperAdmin', 'Admin']
-//   }
-// },
-// {
-//   path:'login',
-//   component:HomeComponent
-// },
+{
+  path:'updateauthor',
+  component:UpdateauthorComponent, 
+  canActivate:[AuthGuard, HasRoleGuard],
+  
+},
+{
+  path:'login',
+  component:HomeComponent
+},
 {
   path:'users',
   component:UsersComponent, 
@@ -53,6 +52,10 @@ const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {
   path:'posts',component:PostsComponent
 ,canActivate:[AuthGuard]
+},
+{
+  path:'updatepost',component: UpdatepostComponent, 
+  canActivate:[AuthGuard]
 },
 {
   path:'addpost',

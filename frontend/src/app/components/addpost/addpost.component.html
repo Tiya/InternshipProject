@@ -10,11 +10,11 @@
       <tbody class="tbody">  
             <tr>
                 <td class="td1"><label>Page Title</label></td>
-                <td class="td1"><input required #postName="ngModel" autocomplete="off" type="text"  name="post_name" [(ngModel)]="PostDetails.postTitle"/></td>                  
+                <td class="td1"><input required #postTitle="ngModel" autocomplete="off" type="text"  name="post_name" [(ngModel)]="PostDetails.postTitle"/></td>                  
             </tr> 
             <tr>
               <td></td>
-                <td><label class="text-danger" *ngIf="form.submitted&&postName.errors?.required">Page Title is required</label></td>
+                <td><label class="text-danger" *ngIf="form.submitted&&postTitle.errors?.required">Page Title is required</label></td>
             </tr> 
             <tr>
                 <td><label>Post Categories</label></td>

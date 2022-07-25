@@ -13,7 +13,7 @@
                 <li class="nav-item"><a class="nav-link" *ngIf="_authService.loggedIn()" routerLinkActive="active" routerLink="posts">Posts</a></li>
                 <li class="nav-item"><a class="nav-link" *ngIf="_authService.loggedIn()" routerLinkActive="active" routerLink="categories">Categories</a></li>
                 <li class="nav-item"><a class="nav-link" *ngIf="_authService.loggedIn()&&_authService.SuperAdminAccess()" routerLinkActive="active" routerLink="users">Users</a></li>
-                <li class="nav-item"><a class="nav-link" *ngIf="_authService.loggedIn()&&(_authService.AdminAccess()||_authService.SuperAdminAccess())" routerLinkActive="active" routerLink="addpost" >Add Posts</a></li>
+                <li class="nav-item"><a class="nav-link" *ngIf="_authService.loggedIn()" routerLinkActive="active" routerLink="addpost" >Add Posts</a></li>
                 <li class="nav-item"><a class="nav-link" *ngIf="_authService.loggedIn()&&(_authService.AdminAccess()||_authService.SuperAdminAccess())" routerLinkActive="active" routerLink="addcategory" >Add Categories</a></li>
                 <li class="nav-item"><a class="nav-link" *ngIf="!_authService.loggedIn()"   data-bs-toggle="modal" data-bs-target="#modalSignin" >Log In</a></li>
                 <li class="nav-item"><a class="nav-link" *ngIf="!_authService.loggedIn()" (click)="onClick('signup')">Sign Up</a></li>

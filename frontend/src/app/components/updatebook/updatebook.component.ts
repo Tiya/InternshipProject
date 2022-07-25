@@ -19,7 +19,7 @@ export class UpdatebookComponent implements OnInit {
     bookFilePath:''
     }
 
-  constructor( private bookdataService: BookdataService, private router:Router) { }
+  constructor(private bookdataService: BookdataService, private router:Router) { }
 
   ngOnInit(): void {
 
@@ -31,13 +31,7 @@ export class UpdatebookComponent implements OnInit {
   }
   editBook()
   {    
-    // const formData = new FormData();
-    // formData.append('file', this.pdffile)
-    // formData.append('image', this.image)
-    // formData.append('bookName', this.bookItem.bookName)
-    // formData.append('bookAuthor', this.bookItem.bookAuthor)
-    // formData.append('bookCategory', this.bookItem.bookCategory)
-    // formData.append('bookDescription', this.bookItem.bookDescription)
+
     this.bookdataService.editBook(this.bookItem); 
     console.log(this.bookItem); 
     alert(this.bookItem.bookName+" is updated successfully");
