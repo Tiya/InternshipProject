@@ -92,27 +92,26 @@ postsRouter.get('/',verifyToken, function (req, res) {
         postCategory : req.body.postCategory,
         postDescription : req.body.postDescription,
         postDate: req.body.postDate,
-        postAuthor: req.body.postAuthor,
         postImagePath : req.files.image[0].filename           
    }         
    var post = new Postdata(post);
    post.save();
 });
-//insertCategory
-postsRouter.post('/insertCategory',verifyToken,upload.fields([
-  {name: "image", maxCount: 1},
-]),function(req,res){
-  res.header("Access-Control-Allow-Origin","*")
-  res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
-  console.log("insertCategory:::");
+// //insertCategory
+// postsRouter.post('/insertCategory',verifyToken,upload.fields([
+//   {name: "image", maxCount: 1},
+// ]),function(req,res){
+//   res.header("Access-Control-Allow-Origin","*")
+//   res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
+//   console.log("insertCategory:::");
 
-  var category = {             
-    categoryName : req.body.categoryName,
+//   var category = {             
+//     categoryName : req.body.categoryName,
                
- }         
- var category = new Categorydata(category);
- category.save();
-});
+//  }         
+//  var category = new Categorydata(category);
+//  category.save();
+// });
 postsRouter.delete('/remove/:id',verifyToken,(req,res)=>{
    
   id = req.params.id;
@@ -131,12 +130,14 @@ postsRouter.put('/update',verifyToken, upload.fields([
   res.header("Access-Control-Allow-Origin","*")
   res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
   console.log(req.body)
+  console.log(req.body._id)
   id=req.body._id,
   postTitle = req.body.postTitle,
   postAuthor = req.body.postAuthor,
   postCategory = req.body.postCategory,
   postDescription = req.body.postDescription,
   postDate= req.body.postDate,
+  postImagePath= req.files.image[0].filename 
  
       
  
@@ -147,7 +148,8 @@ postsRouter.put('/update',verifyToken, upload.fields([
                               "postCategory":postCategory,
                               "postDescription":postDescription,
                               "postDate":postDate,
-                              "postAuthor":postAuthor
+                              "postAuthor":postAuthor,
+                              "postImagePath": postImagePath
                                }})
  .then(function(){
   

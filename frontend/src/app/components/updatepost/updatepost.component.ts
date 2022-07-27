@@ -23,13 +23,14 @@ export class UpdatepostComponent implements OnInit {
     author: any
     today: any = new Date();
     categories: CategoryModel[]=[];
+    postId: any
   constructor(private postdataService: PostdataService, private router:Router, 
      private categorydataService: CategorydataService,   private authservice: AuthService) { }
 
   ngOnInit(): void {
-    let postId = localStorage.getItem("editPostId");
-    console.log("postId in update component:::::", postId);
-    this.postdataService.getPost(postId).subscribe((data)=>{
+    this.postId = localStorage.getItem("editPostId");
+    console.log("postId in update component:::::", this.postId);
+    this.postdataService.getPost(this.postId).subscribe((data)=>{
     this.postItem=JSON.parse(JSON.stringify(data));
     console.log("postId in update component:::::", this.postItem.postTitle);
     this.categorydataService.getCategories().subscribe((data)=>{
@@ -40,14 +41,27 @@ export class UpdatepostComponent implements OnInit {
   }
   editPost()
   {    
-   // formData.append('image', this.image)
-   console.log(this.postItem); 
+    const formData = new FormData();
+    formData.append('_id', this.postId)
+    formData.append('image', this.image)
+    formData.append('postTitle', this.postItem.postTitle)
+    formData.append('postCategory', this.postItem.postCategory)
+    formData.append('postDescription', this.postItem.postDescription)
     this.postItem.postDate=this.today;
+    formData.append('postDate', this.postItem.postDate)
     this.author = this.authservice.getUserName();
     this.postItem.postAuthor=this.author;
+    formData.append('postAuthor', this.postItem.postAuthor)
 
-    this.postdataService.editPost(this.postItem); 
-    console.log(this.postItem); 
+    
+   console.log(this.postItem); 
+   // this.postItem.postDate=this.today;
+  //  this.author = this.authservice.getUserName();
+  //  this.postItem.postAuthor=this.author;
+
+  //  this.postdataService.editPost(this.postItem); 
+  this.postdataService.editPost(formData);
+    console.log(formData); 
     alert(this.postItem.postTitle+" is updated successfully");
     this.router.navigate(['/posts']);
   }

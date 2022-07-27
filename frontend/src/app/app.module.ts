@@ -30,6 +30,7 @@ import { PostsComponent } from './components/posts/posts.component';
 import { PostComponent } from './components/post/post.component';
 import { CategoriesComponent } from './components/categories/categories.component';
 import { UpdatepostComponent } from './components/updatepost/updatepost.component';
+import { UpdatecategoryComponent } from './components/updatecategory/updatecategory.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { UpdatepostComponent } from './components/updatepost/updatepost.componen
     PostComponent,
     CategoriesComponent,
     UpdatepostComponent,
+    UpdatecategoryComponent,
   ],
   imports: [
     BrowserModule,

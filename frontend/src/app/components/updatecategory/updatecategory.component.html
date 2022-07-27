@@ -1,0 +1,31 @@
+<div style="padding-top: 8%;" class='card'>
+    <form  class="shadow" style="padding-top: 2%;" #form="ngForm" (ngSubmit)="form.valid&&editCategory()">
+  <div class='card-header'>
+  Create New Category
+  </div>
+  <div class='card-body'>            
+  <div class='table-responsive'>
+    <table class='table'>       
+    
+      <tbody class="tbody">  
+            <tr>
+                <td class="td1"><label>Category Name</label></td>
+                <td class="td1"><input required #categoryName="ngModel" autocomplete="off" type="text"  name="categoryName" [(ngModel)]="categoryItem.categoryName"/></td>                  
+            </tr> 
+            <tr>
+              <td></td>
+                <td><label class="text-danger" *ngIf="form.submitted&&categoryName.errors?.required">Category Name required</label></td>
+            </tr>               
+            <tr>
+                <td></td>
+                <td class="submit"><input type="submit" value="Submit" id="submit" /></td>                  
+              </tr>             
+      </tbody>
+    </table>
+  </div>
+  </div>
+  </form>
+  </div>
+  
+
+
