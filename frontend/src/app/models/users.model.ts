@@ -3,6 +3,7 @@ export class UserModel{
         public _id: any,
         public username: string,
         public email: string,
-        public role: string
+        public role: string,
+        public password: string
     ){}
  }

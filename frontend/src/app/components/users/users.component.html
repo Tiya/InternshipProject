@@ -43,22 +43,16 @@
                                     </td>   
                                    
                                     <td>
-                                          <form name="myForm" ng-app="follow.controllers" ng-controller="followCtrl">
-                                            <input type="checkbox" name="checkbox-follow-btn" id="checkbox-button-follow-user" class="hide-checkbox-follow-btn"
-                                                   ng-model="author.role" 
-                                                   ng-true-value="'UNFOLLOW'" 
-                                                   ng-false-value="'FOLLOW'">
-                                            
-                                            <label for="checkbox-button-follow-user">{{user.role}}</label>
-                                            </form>
-                                        
-                                    </td>
+                                        <div class="event-wrap">
+                                            <h4><a>{{user.role}}</a></h4>
+                                        </div>
+                                    </td> 
 
-                                 <td>
-                                    <div class="primary-btn">
-                                        <button class="btn btn-info" (click)="onClick(user)" style="cursor:pointer; transition: ease-in-out;"> Read </button>
-                                    </div>
-                                 </td>
+                                    <td>
+                                        <button class="btn-sm btn-warning"id="edit" style="cursor:pointer; margin-right: 10px;"   (click)="editUser(user)"> Edit</button>
+                                     
+                                        <button class="btn-sm btn-danger" id="delete" style="cursor:pointer;" (click)="deleteUser(user)"> Delete</button>   
+                                    </td>
                                 </tr>
                                 
                             </tbody>

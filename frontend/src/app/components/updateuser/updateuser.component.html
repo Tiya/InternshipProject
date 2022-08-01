@@ -1,0 +1,66 @@
+<div style="padding-top: 8%;" class='card'>
+    <form  class="shadow" style="padding-top: 2%;" #form="ngForm" (ngSubmit)="form.valid&&editUser()">
+  <div class='card-header'>
+  Update User Details
+  </div>
+  <div class='card-body'>            
+  <div class='table-responsive'>
+    <table class='table'>       
+    
+      <tbody class="tbody">  
+            <tr>
+                <td class="td1"><label>Full Name</label></td>
+                <td class="td1"><input required #username="ngModel" autocomplete="off" type="text"  name="username" [(ngModel)]="userItem.username"/></td>                  
+            </tr> 
+            <tr>
+              <td></td>
+                <td><label class="text-danger" *ngIf="form.submitted&&username.errors?.required">Full Name is required</label></td>
+            </tr> 
+            <tr>
+                <td class="td1"><label>Email</label></td>
+                <td class="td1"><input required #email="ngModel" autocomplete="off" type="text"  name="email" [(ngModel)]="userItem.email"/></td>                  
+            </tr> 
+            <tr>
+              <td></td>
+                <td><label class="text-danger" *ngIf="form.submitted&&email.errors?.required">Email is required</label></td>
+            </tr> 
+            <tr>
+                <td class="td1"><label>Password</label></td>
+                <td class="td1"><input required #password="ngModel" autocomplete="off" type="text"  name="password" [(ngModel)]="userItem.password"/></td>                  
+            </tr> 
+            <tr>
+              <td></td>
+                <td><label class="text-danger" *ngIf="form.submitted&&password.errors?.required">Password is required</label></td>
+            </tr> 
+            <tr>
+                <td><label>Role</label></td>
+               <td> 
+                <select id="inputState" #role="ngModel" [(ngModel)]="userItem.role" name="role"
+                [ngClass]="{'invalid-textbox' : form.submitted && role.invalid }" required>
+                <option value="" selected>Select</option>
+                <option value="Admin">Admin</option>
+                <option value="Author">Author</option>
+            </select>
+              </td>
+                <!-- <td><input required #postCategory="ngModel" type="text" autocomplete="off" required  name="postCategory" [(ngModel)]="PostDetails.postCategory"/></td>                   -->
+            </tr> 
+            <tr>
+                <td></td>
+                  <!-- <td><label class="text-danger" *ngIf="form.submitted&&postCategory.errors?.required">Please select a Post Category</label></td> -->
+            </tr>  
+        
+           
+         
+            
+                        
+            <tr>
+                <td></td>
+                <td class="submit"><input type="submit" value="Submit" id="submit" /></td>                  
+              </tr>             
+      </tbody>
+    </table>
+  </div>
+  </div>
+  </form>
+  </div>
+  

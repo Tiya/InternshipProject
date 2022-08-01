@@ -5,12 +5,7 @@ const mongoose = require('mongoose');
 var jwt = require('jsonwebtoken');
 let alert = require('alert'); 
 
-
-// const admin = require('../data/admin');
-
-// const db = "mongodb+srv://admin:1289lash@users.rs1bqhv.mongodb.net/?retryWrites=true&w=majority";
-//const db ="mongodb+srv://tiyamartin:Tiya.0290@tiyadatabase.bn7ry.mongodb.net/MyBlogApp?retryWrites=true&w=majority";
- const db = "mongodb+srv://FSDGroup3:Fsdgp3.123@cluster0.1f3izav.mongodb.net/MyBlogApp?retryWrites=true&w=majority";
+const db = "mongodb+srv://FSDGroup3:Fsdgp3.123@cluster0.1f3izav.mongodb.net/MyBlogApp?retryWrites=true&w=majority";
 
 mongoose.connect(db, err=>{
     if(err){
@@ -72,31 +67,11 @@ router.post('/login',(req,res)=>{
       console.log("login user:::", userData.password);
       if(userData.email=="admin@domain.com" && userData.password=="admin1234")
       {
-        // User.findOne({email : userData.email},(error,user)=>
-        // {
-        //     console.log("login user##1:::", user);
-        //     if(error)
-        //     {
-        //         console.log(error);
-        //     }
-        //     else
-        //     if(!user.email)
-        //     {
-        //     userData.username="Admin";
-        //     userData.role="Admin";
-        //     let payload={subject:userData};
-        //     let token =jwt.sign(payload,'secretKey')
-        //     userData.save()
-        //     res.status(200).send({token});
-        //     }
-        //     else{
             userData.username="Admin";
             userData.role="SuperAdmin";
             let payload={subject:userData};
             let token =jwt.sign(payload,'secretKey')
             res.status(200).send({token});
-          //  }
-      //  })
         }
         else{
     User.findOne({email : userData.email},(error,user)=>
@@ -127,5 +102,67 @@ router.post('/login',(req,res)=>{
       }
     }
 )
+//get single user details
+router.get('/:id',verifyToken,  (req, res) => {
+  
+    const id = req.params.id;
+    User.findOne({"_id":id})
+      .then((user)=>{
+          res.send(user);
+      });
+  })
+//delete user
 
+router.delete('/remove/:id',verifyToken,(req,res)=>{
+   
+    id = req.params.id;
+    console.log(id);
+    User.findByIdAndDelete({"_id":id})
+    .then(()=>{
+        console.log('success')
+        // alert("Post deleted successfully");
+        res.send();
+    })
+  })
+
+  // update user details
+
+  router.put('/update',verifyToken, (req,res)=>{
+    res.header("Access-Control-Allow-Origin","*")
+    res.header('Access-Control-Allow-Methods: GET,POST,PATCH,PUT,DELETE')
+    console.log(req.body)
+    console.log(req.body._id)
+    id=req.body._id,
+    username = req.body.username,
+    email = req.body.email,
+    role = req.body.role, 
+    password = req.body.password 
+   
+    User.findByIdAndUpdate({"_id":id},
+                                {$set:{
+                                "username":username,
+                                "email":email,
+                                "role":role,
+                                "password":password,
+                                 }})
+   .then(function(){
+       res.send();
+   })
+  })
 module.exports = router;
+
+function verifyToken(req,res,next){
+    if(!req.headers.authorization){
+        return res.status(401).send('Unauthorised Request');
+    }
+    let token = req.headers.authorization.split(' ')[1]
+    if(token==='null'){
+        return res.status(401).send('Unauthorised Request');
+    }
+    let payload = jwt.verify(token, 'secretKey');
+    if(!payload){
+        return res.status(401).send('Unauthorised Request');
+    }
+    req.userId = payload.subject;
+    next()
+}

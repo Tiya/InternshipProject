@@ -16,6 +16,7 @@ import{PostComponent} from './components/post/post.component';
 import{CategoriesComponent} from './components/categories/categories.component';
 import { UpdatepostComponent } from './components/updatepost/updatepost.component';
 import { UpdatecategoryComponent } from './components/updatecategory/updatecategory.component';
+import { UpdateuserComponent } from './components/updateuser/updateuser.component';
 
 const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {path:'home',component:HomeComponent},
@@ -47,6 +48,14 @@ const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
   }
 },
 {
+  path:'updateuser',
+  component:UpdateuserComponent, 
+  canActivate:[AuthGuard, HasRoleGuard],
+  data:{
+    roles: ['SuperAdmin']
+  }
+},
+{
   path:'post',component: PostComponent, 
   canActivate:[AuthGuard]
 },
@@ -61,9 +70,9 @@ const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 {
   path:'updatecategory',component: UpdatecategoryComponent, 
   canActivate:[AuthGuard],
- // data:{
-    //     roles: ['SuperAdmin', 'Admin']
-    //   }
+ data:{
+        roles: ['SuperAdmin', 'Admin']
+      }
 },
 {
   path:'addpost',
