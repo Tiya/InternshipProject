@@ -11,18 +11,22 @@ import { Router } from '@angular/router';
 export class AddcategoryComponent implements OnInit {
   title:String="Add Category";
   CategoryDetails= new CategoryModel(0,"");
+  categoryItem= {
+    categoryName:'',
+  }
   constructor(private categorydataService: CategorydataService, private router: Router) { }
 
   ngOnInit(): void {
   }
   AddCategory()
   {
-    const formData = new FormData();
     
-    formData.append('categoryName', this.CategoryDetails.categoryName)
-    this.categorydataService.newCategory(formData);
-    console.log("add category ts");
+    
+    this.categoryItem.categoryName=this.CategoryDetails.categoryName;
+    this.categorydataService.newCategory(this.categoryItem);
+    console.log("add category ts", this.categoryItem);
+    
     alert(this.CategoryDetails.categoryName+" is added successfully");
-    this.router.navigate(['/posts']);
+    this.router.navigate(['/categories']);
   }
 }

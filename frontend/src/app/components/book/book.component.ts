@@ -33,8 +33,7 @@ export class BookComponent implements OnInit {
     this.bookdataService.getBook(bookId).subscribe((data)=>{
     this.bookItem=JSON.parse(JSON.stringify(data));
   console.log(this.bookItem)
-     // this.bookImage = this.bookItem.bookImage.data;
-       this.getPicture();
+    
 
     })
 
@@ -58,20 +57,5 @@ export class BookComponent implements OnInit {
     this.router.navigate(['update']);
 
   }
-  getPicture() {
-    let reader = new FileReader();
-    reader.readAsDataURL(this.bookImage);
-    reader.onloadend = (() => {
-       let objectURL = reader.result;
-       this.thumbnail = this.sanitizer.bypassSecurityTrustResourceUrl('' + objectURL);
-    });
-  }
  
-  getImageUrl(book: any) {
- 
-  console.log(book.bookImage.data);
-    let objectURL = 'data:image/png;base64,' + book.bookImage.data;
-    return this.sanitizer.bypassSecurityTrustUrl(objectURL);
-
-  } 
 }

@@ -28,9 +28,10 @@ export class PostsComponent implements OnInit {
   }
   singlePost(post:any)
   {
+    console.log("clicked:::::::")
     localStorage.setItem("singlePostId", post._id.toString());
     this.router.navigate(['post']);
-  }
+  }  
   editPost(post: any){
     console.log("in edit post button clicked", post._id.toString());
     localStorage.setItem("editPostId", post._id.toString());

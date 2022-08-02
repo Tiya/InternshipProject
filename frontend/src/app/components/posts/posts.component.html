@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                 <div class="page-wrapper">
-                    <div class="blog-custom-build"*ngFor="let post of posts; index as i" >
+                    <div class="blog-custom-build" *ngFor="let post of posts; index as i" >
                         <div class="blog-box wow fadeIn">
                             <div class="post-media" >
                                 <a (click)="singlePost(post)" title="">
@@ -36,11 +36,11 @@
                                         <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i><span class="down-mobile">Share on GooglePlus</span></a></li>
                                     </ul>
                                 </div><!-- end post-sharing -->
-                                <h4><a href="marketing-single.html" title="">{{post.postTitle}}</a></h4>
-                                <p>{{post.postDescription}}</p>
-                                <small><a href="marketing-category.html" title="">{{post.postCategory}}</a></small>
-                                <small><a href="marketing-single.html" title="">{{post.postDate | date: 'MMM dd, yyyy'}}</a></small>
-                                <small><a href="#" title="">by {{post.postAuthor}}</a></small>
+                                <h4>{{post.postTitle}}</h4>
+                                <p style="line-height: 1.5em; height: 3em; overflow: hidden;">{{post.postDescription}}</p>
+                                <small><a href="#" title="">{{post.postCategory}}</a></small>
+                                <small>{{post.postDate | date: 'MMM dd, yyyy'}}</small>
+                                <small>by {{post.postAuthor}}</small>
                                 <small><a (click)="singlePost(post)" title=""><i class="fa fa-eye"></i> Read Full</a></small>
                                 <div style="display: flex ; justify-content: center">
                                     <td *ngIf="_authservice.SuperAdminAccess() || _authservice.AdminAccess()  || _authservice.checkAuthorAndUserSame(post.postAuthor)">
@@ -60,7 +60,7 @@
 <!-- Blogs List end -->
                 <hr class="invis">
 
-                <div class="row">
+                <!-- <div class="row">
                     <div class="col-md-12">
                         <nav aria-label="Page navigation">
                             <ul class="pagination justify-content-center">
@@ -73,24 +73,24 @@
                             </ul>
                         </nav>
                     </div><!-- end col -->
-                </div><!-- end row -->
-            </div><!-- end col -->
+                <!-- </div> --> 
+            </div>
 
             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                 <div class="sidebar">
                     <div class="widget">
                         <h2 class="widget-title">Recent Posts</h2>
                         <div class="blog-list-widget">
-                            <div class="list-group">
-                                <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="list-group" *ngFor="let post of posts.slice(0,3); index as i">
+                                <a (click)="singlePost(post)" class="list-group-item list-group-item-action flex-column align-items-start">
                                     <div class="w-100 justify-content-between">
-                                        <img src="upload/small_07.jpg" alt="" class="img-fluid float-left">
-                                        <h5 class="mb-1">5 Beautiful buildings you need to before dying</h5>
-                                        <small>12 Jan, 2016</small>
+                                        <img src="assets/images/files/{{post.postImagePath}}"  alt="" class="img-fluid float-left">
+                                        <h5 class="mb-1">{{post.postTitle}}</h5>
+                                        <small>{{post.postDate | date: 'MMM dd, yyyy'}}</small>
                                     </div>
                                 </a>
 
-                                <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                <!-- <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
                                     <div class="w-100 justify-content-between">
                                         <img src="upload/small_08.jpg" alt="" class="img-fluid float-left">
                                         <h5 class="mb-1">Let's make an introduction for creative life</h5>
@@ -104,7 +104,7 @@
                                         <h5 class="mb-1">Did you see the most beautiful sea in the world?</h5>
                                         <small>07 Jan, 2016</small>
                                     </div>
-                                </a>
+                                </a> -->
                             </div>
                         </div><!-- end blog-list -->
                     </div><!-- end widget -->
