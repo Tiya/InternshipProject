@@ -11,7 +11,11 @@ export class PostdataService {
     console.log("in getpost details")
      return this.http.get("http://localhost:3000/posts/"+id); 
   }
-
+  getPostByCategory(postCategory:any){
+    console.log("in getPostByCategory")
+     return this.http.get("http://localhost:3000/posts/postCategory/"+postCategory); 
+  }
+  
    getPosts(){
      return this.http.get("http://localhost:3000/posts");  
    }

@@ -32,6 +32,7 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { UpdatepostComponent } from './components/updatepost/updatepost.component';
 import { UpdatecategoryComponent } from './components/updatecategory/updatecategory.component';
 import { UpdateuserComponent } from './components/updateuser/updateuser.component';
+import { SingleCategoryPostsComponent } from './components/single-category-posts/single-category-posts.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { UpdateuserComponent } from './components/updateuser/updateuser.componen
     UpdatepostComponent,
     UpdatecategoryComponent,
     UpdateuserComponent,
+    SingleCategoryPostsComponent,
   ],
   imports: [
     BrowserModule,

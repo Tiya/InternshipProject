@@ -72,6 +72,15 @@ postsRouter.get('/:id',verifyToken,  (req, res) => {
     });
 })
 
+postsRouter.get('postCategory/:postCategory',verifyToken,  (req, res) => {
+ 
+  const _postCategory = req.params.postCategory;
+  console.log("postCategory::", _postCategory)
+  Postdata.findOne({"postCategory":_postCategory})
+    .then((post)=>{
+        res.send(post);
+    });
+})
 postsRouter.get('/',verifyToken, function (req, res) {
   Postdata.find()
             .then(function(posts){
