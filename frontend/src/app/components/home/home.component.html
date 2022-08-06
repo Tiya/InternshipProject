@@ -20,7 +20,7 @@
                                 <!-- Name input-->
                                 <label style="align-self:flex-start">Full Name</label><br>
                                 <div class="form-floating mb-3">                                               
-                                    <input  placeholder="Full Name" required #name="ngModel" autocomplete="off" type="text" pattern="^[a-zA-Z]*$" name="name" [(ngModel)]="registerUserData.username"/>                                   
+                                    <input  placeholder="Full Name" required #name="ngModel" autocomplete="off" type="text" pattern="^[a-zA-Z ]*$" name="name" [(ngModel)]="registerUserData.username"/>                                   
                                     <div class="text-danger" *ngIf="userForm.submitted&&name.errors?.required">Name is required</div>
                                     <div class="text-danger" *ngIf="userForm.submitted&&name.errors?.pattern">Name should contain only alphabets</div>
                                 </div>
@@ -71,17 +71,81 @@
                 </div>
             </div>
         </section>
+<!-- About-->
+<section class="page-section" id="about" style="background-color: #C7DAEB;">
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-lg-8 text-center">
+                <h2 class="text-danger mt-0">Make your own blog for Free</h2>
+                <hr class="divider divider-light" />
+                <p class=" mb-4" style="color: black;"> 
+                You can publish your passions your way.
+                 Whether you'd like to share your knowledge, experiance or the lastest news,
+                  create a unique ans beaautiful blog using 'MyBlogApp'.
+                  There are a wide varity of categories present.
+                   Select your category and publish your post under them. 
+                   You can also read other authors posts also for free.
+            </p>
+                <a class="btn-primary btn" (click)="onClick('signup')">Register!</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Services-->
+<section class="page-section" id="services">
+    <div class="container px-4 px-lg-5">
+        <h2 class="text-center mt-0">At Your Service</h2>
+        <hr class="divider" />
+        <div class="row gx-4 gx-lg-5">
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <div class="mb-2"><i class="bi bi-book fs-1 text-primary"></i></div>
+                    <h3 class="h4 mb-2">Read more, Read better.</h3>
+                    <p class="text-muted mb-0">Build a library on the go, with a wide range of content in different formats
+                        and different languages. Discover different categories of posts on-the-go with a single app.
+                        <br>
+                        <br>
+                        Reading Goals to live a  better life</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <div class="mb-2"><i class="bi bi-calendar-check fs-1 text-primary"></i></div>
+                    <h3 class="h4 mb-2">Up to Date</h3>
+                    <p class="text-muted mb-0">All posts are kept up to date to keep things fresh.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <div class="mb-2"><i class="bi bi-cloud-arrow-up fs-1 text-primary"></i></div>
+                    <h3 class="h4 mb-2">Ready to Publish</h3>
+                    <p class="text-muted mb-0 ">A free of cost publishing platform, MyBlogApp helps
+                      you write, publish and read your blog posts.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="mt-5">
+                    <div class="mb-2"><i class="bi-globe fs-1 text-primary"></i></div>
+                    <h3 class="h4 mb-2">Large Collection</h3>
+                    <p class="text-muted mb-0">Large variety of collections from different authors</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
         <section class="section lb">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12">
                         <div class="page-wrapper">
-                            <div class="blog-custom-build">
+                            <div class="blog-custom-build" *ngFor="let post of posts; index as i" >
                                 <div class="blog-box wow fadeIn">
-                                    <div class="post-media">
-                                        <a href="marketing-single.html" title="">
-                                            <img src="upload/market_blog_01.jpg" alt="" class="img-fluid">
+                                    <div class="post-media" >
+                                        <a (click)="singlePost(post)" title="">
+                                            <img src="assets/images/files/{{post.postImagePath}}" style="height: 250px;" alt="" class="img-fluid">
                                             <div class="hovereffect">
                                                 <span></span>
                                             </div>
@@ -94,173 +158,34 @@
                                             <ul class="list-inline">
                                                 <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
                                                 <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
-                                                <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
+                                                <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i><span class="down-mobile">Share on GooglePlus</span></a></li>
                                             </ul>
                                         </div><!-- end post-sharing -->
-                                        <h4><a href="marketing-single.html" title="">You can learn how to make money with your blog and videos</a></h4>
-                                        <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enimcerat elicerat eli nibh, maximus ac felis nec, maximus tempor odio.</p>
-                                        <small><a href="marketing-category.html" title="">Make Money</a></small>
-                                        <small><a href="marketing-single.html" title="">24 July, 2017</a></small>
-                                        <small><a href="#" title="">by Jack</a></small>
-                                        <small><a href="#" title=""><i class="fa fa-eye"></i> 2291</a></small>
+                                        <h4>{{post.postTitle}}</h4>
+                                        <p style="line-height: 1.5em; height: 3em; overflow: hidden;">{{post.postDescription}}</p>
+                                        <small><a href="#" title="">{{post.postCategory}}</a></small>
+                                        <small>{{post.postDate | date: 'MMM dd, yyyy'}}</small>
+                                        <small>by {{post.postAuthor}}</small>
+                                        <small><a (click)="singlePost(post)" title=""><i class="fa fa-eye"></i> Read Full</a></small>
+                                        <!-- <div style="display: flex ; justify-content: center">
+                                            <td *ngIf="_authservice.SuperAdminAccess() || _authservice.AdminAccess()  || _authservice.checkAuthorAndUserSame(post.postAuthor)">
+                                           <button class="btn-sm btn-warning"id="edit" style="cursor:pointer; margin-right: 10px;"  (click)="editPost(post)"> Edit</button>
+                                         
+                                            <button class="btn-sm btn-danger" id="delete" style="cursor:pointer;" (click)="deletePost(post)"> Delete</button>   
+                                            </td>
+                                        </div> -->
                                     </div><!-- end meta -->
                                 </div><!-- end blog-box -->
-
+        
                                 <hr class="invis">
-
-                                <div class="blog-box wow fadeIn">
-                                    <div class="post-media">
-                                        <a href="marketing-single.html" title="">
-                                            <img src="upload/market_blog_02.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect">
-                                                <span></span>
-                                            </div>
-                                            <!-- end hover -->
-                                        </a>
-                                    </div>
-                                    <!-- end media -->
-                                    <div class="blog-meta big-meta text-center">
-                                        <div class="post-sharing">
-                                            <ul class="list-inline">
-                                                <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
-                                                <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
-                                                <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
-                                            </ul>
-                                        </div><!-- end post-sharing -->
-                                        <h4><a href="marketing-single.html" title="">The way to reach hundreds of thousands of customers is through the SEO</a></h4>
-                                        <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enimcerat elicerat eli nibh, maximus ac felis nec, maximus tempor odio.</p>
-                                        <small><a href="marketing-category.html" title="">Marketing</a></small>
-                                        <small><a href="marketing-single.html" title="">21 July, 2017</a></small>
-                                        <small><a href="#" title="">by Jack</a></small>
-                                        <small><a href="#" title=""><i class="fa fa-eye"></i> 666</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end blog-box -->
-
-                                <hr class="invis">
-
-                                <div class="blog-box wow fadeIn">
-                                    <div class="post-media">
-                                        <a href="marketing-single.html" title="">
-                                            <img src="upload/market_blog_03.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect">
-                                                <span></span>
-                                            </div>
-                                            <!-- end hover -->
-                                        </a>
-                                    </div>
-                                    <!-- end media -->
-                                    <div class="blog-meta big-meta text-center">
-                                        <div class="post-sharing">
-                                            <ul class="list-inline">
-                                                <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
-                                                <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
-                                                <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
-                                            </ul>
-                                        </div><!-- end post-sharing -->
-                                        <h4><a href="marketing-single.html" title="">Ways to reach the world through mobile phones</a></h4>
-                                        <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enimcerat elicerat eli nibh, maximus ac felis nec, maximus tempor odio.</p>
-                                        <small><a href="marketing-category.html" title="">Technology</a></small>
-                                        <small><a href="marketing-single.html" title="">20 July, 2017</a></small>
-                                        <small><a href="#" title="">by Martin</a></small>
-                                        <small><a href="#" title=""><i class="fa fa-eye"></i> 441</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end blog-box -->
-
-                                <hr class="invis">
-
-                                <div class="blog-box wow fadeIn">
-                                    <div class="post-media">
-                                        <a href="marketing-single.html" title="">
-                                            <img src="upload/market_blog_04.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect">
-                                                <span></span>
-                                            </div>
-                                            <!-- end hover -->
-                                        </a>
-                                    </div>
-                                    <!-- end media -->
-                                    <div class="blog-meta big-meta text-center">
-                                        <div class="post-sharing">
-                                            <ul class="list-inline">
-                                                <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
-                                                <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
-                                                <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
-                                            </ul>
-                                        </div><!-- end post-sharing -->
-                                        <h4><a href="marketing-single.html" title="">Would you like to work as a freelancer for lifetime?</a></h4>
-                                        <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enimcerat elicerat eli nibh, maximus ac felis nec, maximus tempor odio.</p>
-                                        <small><a href="marketing-category.html" title="">Technology</a></small>
-                                        <small><a href="marketing-single.html" title="">20 July, 2017</a></small>
-                                        <small><a href="#" title="">by Martin</a></small>
-                                        <small><a href="#" title=""><i class="fa fa-eye"></i> 8934</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end blog-box -->
-
-                                <hr class="invis">
-
-                                <div class="blog-box wow fadeIn">
-                                    <div class="post-media">
-                                        <a href="marketing-single.html" title="">
-                                            <img src="upload/market_blog_05.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect">
-                                                <span></span>
-                                            </div>
-                                            <!-- end hover -->
-                                        </a>
-                                    </div>
-                                    <!-- end media -->
-                                    <div class="blog-meta big-meta text-center">
-                                        <div class="post-sharing">
-                                            <ul class="list-inline">
-                                                <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
-                                                <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
-                                                <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
-                                            </ul>
-                                        </div><!-- end post-sharing -->
-                                        <h4><a href="marketing-single.html" title="">Ten golden rules to be followed for a real team work</a></h4>
-                                        <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enimcerat elicerat eli nibh, maximus ac felis nec, maximus tempor odio.</p>
-                                        <small><a href="marketing-category.html" title="">Technology</a></small>
-                                        <small><a href="marketing-single.html" title="">19 July, 2017</a></small>
-                                        <small><a href="#" title="">by Martin</a></small>
-                                        <small><a href="#" title=""><i class="fa fa-eye"></i> 451</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end blog-box -->
-
-                                <hr class="invis">
-
-                                <div class="blog-box wow fadeIn">
-                                    <div class="post-media">
-                                        <a href="marketing-single.html" title="">
-                                            <img src="upload/market_blog_06.jpg" alt="" class="img-fluid">
-                                            <div class="hovereffect">
-                                                <span></span>
-                                            </div>
-                                            <!-- end hover -->
-                                        </a>
-                                    </div>
-                                    <!-- end media -->
-                                    <div class="blog-meta big-meta text-center">
-                                        <div class="post-sharing">
-                                            <ul class="list-inline">
-                                                <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
-                                                <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
-                                                <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
-                                            </ul>
-                                        </div><!-- end post-sharing -->
-                                        <h4><a href="marketing-single.html" title="">Thanks to the Internet, there is no limit to what you will just try!</a></h4>
-                                        <p>Aenean interdum arcu blandit, vehicula magna non, placerat elit. Mauris et pharetratortor. Suspendissea sodales urna. In at augue elit. Vivamus enimcerat elicerat eli nibh, maximus ac felis nec, maximus tempor odio.</p>
-                                        <small><a href="marketing-category.html" title="">Technology</a></small>
-                                        <small><a href="marketing-single.html" title="">19 July, 2017</a></small>
-                                        <small><a href="#" title="">by Martin</a></small>
-                                        <small><a href="#" title=""><i class="fa fa-eye"></i> 192</a></small>
-                                    </div><!-- end meta -->
-                                </div><!-- end blog-box -->
+        
+                               <!-- end blog-box -->
                             </div>
                         </div>
-
+        <!-- Blogs List end -->
                         <hr class="invis">
-
-                        <div class="row">
+        
+                        <!-- <div class="row">
                             <div class="col-md-12">
                                 <nav aria-label="Page navigation">
                                     <ul class="pagination justify-content-center">
@@ -273,77 +198,59 @@
                                     </ul>
                                 </nav>
                             </div><!-- end col -->
-                        </div><!-- end row -->
-                    </div><!-- end col -->
-
+                        <!-- </div> --> 
+                    </div>
+        
                     <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                         <div class="sidebar">
                             <div class="widget">
                                 <h2 class="widget-title">Recent Posts</h2>
                                 <div class="blog-list-widget">
-                                    <div class="list-group">
-                                        <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
+                                    <div class="list-group" *ngFor="let post of posts.slice(0,3); index as i">
+                                        <a class="list-group-item list-group-item-action flex-column align-items-start">
                                             <div class="w-100 justify-content-between">
-                                                <img src="upload/small_07.jpg" alt="" class="img-fluid float-left">
-                                                <h5 class="mb-1">5 Beautiful buildings you need to before dying</h5>
-                                                <small>12 Jan, 2016</small>
+                                                <img src="assets/images/files/{{post.postImagePath}}"  alt="" class="img-fluid float-left">
+                                                <h5 class="mb-1">{{post.postTitle}}</h5>
+                                                <small>{{post.postDate | date: 'MMM dd, yyyy'}}</small>
+                                                <small><a (click)="singlePost(post)"> Read</a></small>
                                             </div>
                                         </a>
-
-                                        <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 justify-content-between">
-                                                <img src="upload/small_08.jpg" alt="" class="img-fluid float-left">
-                                                <h5 class="mb-1">Let's make an introduction for creative life</h5>
-                                                <small>11 Jan, 2016</small>
-                                            </div>
-                                        </a>
-
-                                        <a href="marketing-single.html" class="list-group-item list-group-item-action flex-column align-items-start">
-                                            <div class="w-100 last-item justify-content-between">
-                                                <img src="upload/small_09.jpg" alt="" class="img-fluid float-left">
-                                                <h5 class="mb-1">Did you see the most beautiful sea in the world?</h5>
-                                                <small>07 Jan, 2016</small>
-                                            </div>
-                                        </a>
+                                    
                                     </div>
                                 </div><!-- end blog-list -->
                             </div><!-- end widget -->
-
+        
                             <div id="" class="widget">
                                 <h2 class="widget-title">Advertising</h2>
                                 <div class="banner-spot clearfix">
                                     <div class="banner-img">
-                                        <img src="upload/banner_03.jpg" alt="" class="img-fluid">
+                                        <!-- <img src="upload/banner_03.jpg" alt="" class="img-fluid"> -->
                                     </div><!-- end banner-img -->
                                 </div><!-- end banner -->
                             </div><!-- end widget -->
-
+        
                             <div class="widget">
                                 <h2 class="widget-title">Instagram Feed</h2>
                                 <div class="instagram-wrapper clearfix">
-                                    <a class="" href="#"><img src="upload/small_09.jpg" alt="" class="img-fluid"></a>
-                                    <a href="#"><img src="upload/small_01.jpg" alt="" class="img-fluid"></a>
+                                    <!-- <a class="" href="#"><img src="upload/small_09.jpg" alt="" class="img-fluid"></a> -->
+                                    <!-- <a href="#"><img src="upload/small_01.jpg" alt="" class="img-fluid"></a>
                                     <a href="#"><img src="upload/small_02.jpg" alt="" class="img-fluid"></a>
                                     <a href="#"><img src="upload/small_03.jpg" alt="" class="img-fluid"></a>
                                     <a href="#"><img src="upload/small_04.jpg" alt="" class="img-fluid"></a>
                                     <a href="#"><img src="upload/small_05.jpg" alt="" class="img-fluid"></a>
                                     <a href="#"><img src="upload/small_06.jpg" alt="" class="img-fluid"></a>
                                     <a href="#"><img src="upload/small_07.jpg" alt="" class="img-fluid"></a>
-                                    <a href="#"><img src="upload/small_08.jpg" alt="" class="img-fluid"></a>
+                                    <a href="#"><img src="upload/small_08.jpg" alt="" class="img-fluid"></a> -->
                                 </div><!-- end Instagram wrapper -->
                             </div><!-- end widget -->
-
+        
                             <div class="widget">
                                 <h2 class="widget-title">Popular Categories</h2>
                                 <div class="link-widget">
-                                    <ul>
-                                        <li><a href="#">Marketing <span>(21)</span></a></li>
-                                        <li><a href="#">SEO Service <span>(15)</span></a></li>
-                                        <li><a href="#">Digital Agency <span>(31)</span></a></li>
-                                        <li><a href="#">Make Money <span>(22)</span></a></li>
-                                        <li><a href="#">Blogging <span>(66)</span></a></li>
-                                        <li><a href="#">Entertaintment <span>(11)</span></a></li>
-                                        <li><a href="#">Video Tuts <span>(87)</span></a></li>
+                                    <ul  *ngFor="let category of categories; index as i">
+                                        <li><a href="#">{{category.categoryName}}
+                                             <!-- <span>(21)</span> -->
+                                            </a></li>
                                     </ul>
                                 </div><!-- end link-widget -->
                             </div><!-- end widget -->

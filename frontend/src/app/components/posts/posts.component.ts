@@ -15,9 +15,7 @@ export class PostsComponent implements OnInit {
   title:String = 'Blog List';
 
   posts: PostsModel[]=[];
-  myPDF: Uint8Array | undefined;
-  blob: Blob | undefined;
-  thumbnail: any;
+  
   postImage:any;
   categories: CategoryModel[]=[];
   constructor(private postdataService: PostdataService, private router:Router,

@@ -52,7 +52,7 @@ var dir = '../frontend/src/assets/images';
 //Check file type
 function checkFileType(file, callback){
 
-  const filetypes = /jpeg|jpg|png|gif/;
+  const filetypes = /jpeg|jpg|png/;
   //check extension
   const extname=filetypes.test(path.extname(file.originalname).toLowerCase());
   //check mime
@@ -63,7 +63,7 @@ function checkFileType(file, callback){
     callback('Error: Images only');
   }
 }
-postsRouter.get('/:id',verifyToken,  (req, res) => {
+postsRouter.get('/:id', (req, res) => {
   
   const id = req.params.id;
   Postdata.findOne({"_id":id})
@@ -81,7 +81,7 @@ postsRouter.get('postCategory/:postCategory',verifyToken,  (req, res) => {
         res.send(post);
     });
 })
-postsRouter.get('/',verifyToken, function (req, res) {
+postsRouter.get('/',function (req, res) {
   Postdata.find()
             .then(function(posts){
                 res.send(posts);

@@ -60,8 +60,9 @@ export class UpdatepostComponent implements OnInit {
   //  this.postItem.postAuthor=this.author;
 
   //  this.postdataService.editPost(this.postItem); 
+  console.log(formData); 
   this.postdataService.editPost(formData);
-    console.log(formData); 
+  
     alert(this.postItem.postTitle+" is updated successfully");
     this.router.navigate(['/posts']);
   }

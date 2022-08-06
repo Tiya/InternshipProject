@@ -27,7 +27,7 @@ console.log("in addCategoryRoutes");
       });
   })
   //get all categories
-  categoryRouter.get('/',verifyToken, function (req, res) {
+  categoryRouter.get('/', function (req, res) {
 
     Categorydata.find()
               .then(function(categories){

@@ -31,10 +31,10 @@ export class PostdataService {
     return this.http.delete("http://localhost:3000/posts/remove/"+id)
   }
   //update a post
-  editPost(post:any)
+  editPost(formData:FormData)
   {
     console.log('post update')
-    return this.http.put("http://localhost:3000/posts/update",post)
+    return this.http.put("http://localhost:3000/posts/update",formData)
     .subscribe(data =>{console.log(data)})
   }
 }

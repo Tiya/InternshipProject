@@ -35,10 +35,7 @@ const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
   canActivate:[AuthGuard, HasRoleGuard],
   
 },
-{
-  path:'login',
-  component:HomeComponent
-},
+
 {
   path:'users',
   component:UsersComponent, 
@@ -57,7 +54,7 @@ const routes: Routes = [{path:'',redirectTo: 'home', pathMatch: 'full' },
 },
 {
   path:'post',component: PostComponent, 
-  canActivate:[AuthGuard]
+  // canActivate:[AuthGuard]
 },
 {
   path:'posts',component:PostsComponent
